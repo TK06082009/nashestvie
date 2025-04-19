@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Нашествие</title>
+    <style>
+      body {
+        background: #1a1a1a;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        padding: 40px;
+      }
+      .screen {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+      button {
+        margin: 8px;
+        padding: 10px 20px;
+        background-color: #444;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 6px;
+      }
+      button:hover {
+        background-color: #666;
+      }
+      img {
+        max-width: 90%;
+        border-radius: 12px;
+        margin: 20px 0;
+        box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Нашествие</h1>
+
+    <div id="main-screen" class="screen active">
+      <p>Выбери раздел:</p>
+      <button onclick="showScreen('map')">Карта</button>
+      <button onclick="showScreen('battle')">Бой</button>
+      <button onclick="showScreen('shop')">Магазин</button>
+    </div>
+
+    <div id="map" class="screen">
+      <h2>Карта мира</h2>
+      <img src="https://i.imgur.com/zMLkGcI.jpeg" alt="Карта мира">
+      <p>Показаны доступные зоны и боссы.</p>
+      <button onclick="showScreen('main-screen')">Назад</button>
+    </div>
+
+    <div id="battle" class="screen">
+      <h2>Бой с боссом</h2>
+      <img src="https://i.imgur.com/x1LDwnr.jpeg" alt="Битва с боссом">
+      <p>Босс: Костяной Жрец. Фаза: Призыв скелетов.</p>
+      <button onclick="alert('Вы нанесли 128 урона!')">Удар</button>
+      <button onclick="showScreen('main-screen')">Назад</button>
+    </div>
+
+    <div id="shop" class="screen">
+      <h2>Магазин экипировки</h2>
+      <img src="https://i.imgur.com/V4uPLtA.jpeg" alt="Магазин">
+      <p>Покупай экипировку и усиливайся!</p>
+      <button onclick="alert('Меч куплен! +10 к урону')">Купить меч</button>
+      <button onclick="showScreen('main-screen')">Назад</button>
+    </div>
+
+    <script>
+      function showScreen(id) {
+        document.querySelectorAll('.screen').forEach(screen => {
+          screen.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+      }
+    </script>
+  </body>
+</html>
